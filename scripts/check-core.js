@@ -4,7 +4,7 @@ const uri = 'http://localhost:8545'
 const web3 = new Web3(uri)
 const provider = new Web3.providers.HttpProvider(uri)
 
-const ERC20_DATA = require('../artifacts/contracts/IERC20.sol/IERC20.json')
+const ERC20_DATA = require('../artifacts/@uniswap/v2-periphery/contracts/interfaces/IERC20.sol/IERC20.json')
 const DAI_ADDRESS = '0x6b175474e89094c44da98b954eedeac495271d0f'
 
 async function main() {
