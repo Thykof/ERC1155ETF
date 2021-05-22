@@ -10,18 +10,7 @@ const ADDR = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266";
 const DAI = "0x6b175474e89094c44da98b954eedeac495271d0f";
 const router = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
 
-const ERC20Abi = [
-  // Read-Only Functions
-  "function balanceOf(address owner) view returns (uint256)",
-  "function decimals() view returns (uint8)",
-  "function symbol() view returns (string)",
-
-  // Authenticated Functions
-  "function transfer(address to, uint amount) returns (boolean)",
-
-  // Events
-  "event Transfer(address indexed from, address indexed to, uint amount)"
-];
+const ERC20_DATA = require('../artifacts/@uniswap/v2-periphery/contracts/interfaces/IERC20.sol/IERC20.json')
 
 describe("Swap", function () {
   it('balanceOf DAI', async function() {
@@ -54,7 +43,7 @@ describe("Swap", function () {
       value: ethers.utils.parseUnits('1', 'ether').toHexString()
     });
 
-    const DAIContract = await new ethers.Contract(DAI, ERC20Abi, provider);
+    const DAIContract = await new ethers.Contract(DAI, ERC20_DATA.abi, provider);
     let r = await DAIContract.balanceOf(swap.address)
     console.log(r.toNumber());
   });

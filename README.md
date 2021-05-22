@@ -15,4 +15,12 @@ networks: {
 
 in `hardhat.config.js` to fork the mainet ans have the UNISWAP and ERC20 contracts already deployed.
 
-  
+
+## Usage
+Run a development node:
+
+    npm run node
+
+Run the tests:
+
+    npm run test

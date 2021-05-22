@@ -13,12 +13,13 @@ import "@uniswap/lib/contracts/libraries/FixedPoint.sol";
 
 import "hardhat/console.sol";
 
+
 contract Broker is Ownable {
     using SafeMath for uint256;
 
     address public immutable factory;
     IUniswapV2Router02 public router;
-    IERC20 DAI;
+    IERC20 public DAI;
 
     // accounts to token address to amount
     mapping(address => mapping(address => uint256)) public balances;
