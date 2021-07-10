@@ -31,17 +31,21 @@ contract MyDeFiProject {
   }
 
   function swapTokensForEth(address token, uint amountIn, uint amountOutMin, uint deadline) external {
+
     IERC20(token).transferFrom(msg.sender, address(this), amountIn);
     address[] memory path = new address[](2);
     path[0] = address(DAI);
     path[1] = uniswap.WETH();
     IERC20(token).approve(address(uniswap), amountIn);
-    uniswap.swapExactTokensForETH(
+    int256[] memory amounts = uniswap.swapExactTokensForETH(
       amountIn,
       amountOutMin,
       path,
       msg.sender,
       deadline
     );
+
+    excessSlippage
+
   }
 }
